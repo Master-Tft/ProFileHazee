@@ -1,72 +1,134 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mậu Thân (Hazee) - Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+/* 1. THIẾT LẬP NỀN VÀ CĂN GIỮA */
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
-    <div class="card">
-        <img src="avatar.png" alt="Mậu Thân Avatar" class="avatar">
-        
-        <h1>Mậu Thân (Hazee) <i class="fas fa-check-circle verified-tick"></i></h1>
-        
-        <p>🚀 IT Developer | MMO Strategist</p>
+/* 2. NỀN MATRIX */
+#matrixCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
 
-        <div class="contact-box">
-            <i class="fas fa-envelope"></i>
-            <a href="mailto:mauthansky77@gmail.com" style="text-decoration:none; color:inherit;">
-                CONTACT: <strong>mauthansky77@gmail.com</strong>
-            </a>
-        </div>
-        
-        <div class="social-links">
-            <a href="https://github.com/Master-Tft" class="github" target="_blank">
-                <i class="fab fa-github"></i> GitHub
-            </a>
+/* 3. CARD TRẮNG (GIỐNG ẢNH MẪU CỦA BẠN) */
+.card {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 40px; /* Bo góc cực tròn như ảnh */
+    text-align: center;
+    max-width: 330px;
+    width: 90%;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+}
 
-            <a href="https://web.facebook.com/Hazee.070908" class="facebook" target="_blank">
-                <i class="fab fa-facebook"></i> Facebook
-            </a>
+/* 4. CHI TIẾT BÊN TRONG CARD */
+.avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #fff;
+    background: #e2e8f0;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
 
-            <a href="https://www.tiktok.com/@hazee.070908" class="TikTok" target="_blank">
-                <i class="fab fa-tiktok"></i> TikTok
-            </a>
-        </div>
+h1 {
+    color: #333;
+    font-size: 1.6rem;
+    margin: 10px 0 5px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-        <div class="youtube-music">
-            <p><i class="fab fa-youtube"></i> Donald Gold - Trăng Hoa Mây Mưa</p>
-            <div id="player" style="display:none;"></div>
-            <button onclick="playMusic()" id="playBtn">Play Music 🎵</button>
-            <button onclick="pauseMusic()" id="pauseBtn" style="display:none;">Pause ⏸️</button>
-        </div>
-    </div>
+.verified-tick {
+    color: #1d9bf0;
+    font-size: 1.2rem;
+    margin-left: 8px;
+}
 
-    <script src="https://www.youtube.com/iframe_api"></script>
-    <script>
-        var player;
-        function onYouTubeIframeAPIReady() {
-            player = new YT.Player('player', {
-                height: '0',
-                width: '0',
-                videoId: 'SPTUEeGW50E',
-                playerVars: { 'autoplay': 0, 'loop': 1, 'playlist': 'SPTUEeGW50E' }
-            });
-        }
-        function playMusic() {
-            player.playVideo();
-            document.getElementById('playBtn').style.display = 'none';
-            document.getElementById('pauseBtn').style.display = 'inline-block';
-        }
-        function pauseMusic() {
-            player.pauseVideo();
-            document.getElementById('playBtn').style.display = 'inline-block';
-            document.getElementById('pauseBtn').style.display = 'none';
-        }
-    </script>
+.subtitle {
+    color: #666;
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
 
-</body>
-</html>
+/* 5. Ô LIÊN HỆ & NÚT BẤM */
+.contact-box {
+    background: #fff;
+    border: 1px dashed #1d9bf0;
+    padding: 12px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+.contact-box a {
+    color: #1d9bf0;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+
+.github { background: #444b52; }
+.facebook { background: #1877f2; }
+.tiktok { background: linear-gradient(to right, #000, #25f4ee, #fe2c55); }
+
+.social-links a:hover { transform: scale(1.03); }
+
+/* 6. PHẦN NHẠC */
+.youtube-music {
+    background: #f8fafc;
+    padding: 15px;
+    border-radius: 25px;
+    margin-top: 25px;
+}
+
+.youtube-music p {
+    font-size: 0.8rem;
+    color: #ff0000;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#playBtn, #pauseBtn {
+    background: #ff0000;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#playBtn:hover { transform: scale(1.05); background: #e60000; }
