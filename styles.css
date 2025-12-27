@@ -132,3 +132,90 @@ h1 {
 }
 
 #playBtn:hover { transform: scale(1.05); background: #e60000; }
+
+/* NỀN VÀ CĂN GIỮA */
+body {
+    margin: 0; padding: 0; overflow: hidden;
+    background-color: #000;
+    display: flex; justify-content: center; align-items: center;
+    min-height: 100vh; font-family: 'Segoe UI', sans-serif;
+}
+
+#matrixCanvas { position: fixed; top: 0; left: 0; z-index: -1; }
+
+/* CARD TRẮNG CHÍNH */
+.card {
+    background: #ffffff;
+    padding: 35px; border-radius: 40px;
+    text-align: center; max-width: 320px; width: 90%;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+}
+
+/* HIỆU ỨNG AVATAR XOAY LẤP LÁNH */
+.avatar-container {
+    position: relative;
+    width: 150px; height: 150px;
+    margin: 0 auto 15px;
+}
+
+.avatar {
+    width: 100%; height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #fff;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+    transition: 0.8s;
+}
+
+.avatar-container:hover .avatar {
+    transform: rotateY(360deg); /* Xoay vòng tròn 3D */
+    border-color: #00ff00;
+    box-shadow: 0 0 25px #00ff00;
+}
+
+/* TEXT */
+h1 { color: #333; font-size: 1.6rem; margin: 10px 0; display: flex; align-items: center; justify-content: center; }
+.verified-tick { color: #1d9bf0; margin-left: 8px; }
+.subtitle { color: #666; font-size: 0.95rem; margin-bottom: 20px; }
+
+/* Ô LIÊN HỆ */
+.contact-box { border: 1px dashed #1d9bf0; padding: 10px; border-radius: 15px; margin-bottom: 20px; }
+.contact-box a { color: #1d9bf0; text-decoration: none; font-size: 0.85rem; font-weight: bold; }
+
+/* NÚT MẠNG XÃ HỘI */
+.social-links { display: flex; flex-direction: column; gap: 10px; }
+.social-links a {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    padding: 12px; color: white; text-decoration: none;
+    border-radius: 25px; font-weight: bold; transition: 0.3s;
+}
+.github { background: #333; }
+.facebook { background: #1877f2; }
+.tiktok { background: linear-gradient(to right, #000, #25f4ee, #fe2c55); }
+.social-links a:hover { transform: scale(1.05); filter: brightness(1.2); }
+
+/* HIỆU ỨNG VIỀN NHẠC GLOOM/FLASH */
+.youtube-music {
+    background: #f1f5f9;
+    padding: 15px; border-radius: 25px; margin-top: 25px;
+    border: 2px solid transparent;
+    animation: borderGlow 3s infinite; /* Viền đổi màu liên tục */
+}
+
+@keyframes borderGlow {
+    0% { border-color: #ff0000; box-shadow: 0 0 5px rgba(255, 0, 0, 0.2); }
+    50% { border-color: #00ff00; box-shadow: 0 0 15px rgba(0, 255, 0, 0.4); }
+    100% { border-color: #ff0000; box-shadow: 0 0 5px rgba(255, 0, 0, 0.2); }
+}
+
+.music-title { color: #ff0000; font-weight: bold; font-size: 0.75rem; margin-bottom: 10px; }
+
+.glow-button {
+    background: #ff0000; color: white; border: none;
+    padding: 10px 25px; border-radius: 20px;
+    font-weight: bold; cursor: pointer;
+    transition: 0.3s;
+}
+
+.glow-button:hover { background: #e60000; box-shadow: 0 0 20px rgba(255, 0, 0, 0.6); }
