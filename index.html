@@ -10,29 +10,70 @@
 <body>
 
     <div class="card">
-        <img src="avatar.png" alt="Avatar" class="avatar">
+        <img src="avatar.png" alt="Mậu Thân Avatar" class="avatar">
         
         <h1>Mậu Thân (Hazee) <i class="fas fa-check-circle verified-tick"></i></h1>
+        
         <p>🚀 Chuyên gia sáng tạo nội dung & Lập trình viên tương lai.</p>
 
         <div class="contact-box">
             <i class="fas fa-envelope"></i>
-            <span>Liên Hệ: <strong>mauthansky77@gmail.com</strong></span>
+            <a href="mailto:mauthansky77@gmail.com" style="text-decoration:none; color:inherit;">
+                CONTACT: <strong>mauthansky77@gmail.com</strong>
+            </a>
         </div>
         
         <div class="social-links">
             <a href="https://github.com/Master-Tft" class="github" target="_blank">
                 <i class="fab fa-github"></i> GitHub
             </a>
+
             <a href="https://web.facebook.com/Hazee.070908" class="facebook" target="_blank">
                 <i class="fab fa-facebook"></i> Facebook
             </a>
+
             <a href="https://www.tiktok.com/@hazee.070908" class="TikTok" target="_blank">
                 <i class="fab fa-tiktok"></i> TikTok
             </a>
         </div>
+
+        <div class="youtube-music">
+            <p><i class="fab fa-youtube"></i> Đang phát: Trăng Hoa Mây Mưa 🎵</p>
+            <div id="player" style="display:none;"></div>
+            <button onclick="playMusic()" id="playBtn">Nghe nhạc 🎵</button>
+            <button onclick="pauseMusic()" id="pauseBtn" style="display:none;">Tạm dừng ⏸️</button>
+        </div>
     </div>
 
-</body>
+    <script src="https://www.youtube.com/iframe_api"></script>
 
+    <script>
+        var player;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('player', {
+                height: '0',
+                width: '0',
+                videoId: 'SPTUEeGW50E', // ID bài Trăng Hoa Mây Mưa
+                playerVars: {
+                    'autoplay': 0,
+                    'loop': 1,
+                    'playlist': 'SPTUEeGW50E'
+                }
+            });
+        }
+
+        function playMusic() {
+            player.playVideo();
+            document.getElementById('playBtn').style.display = 'none';
+            document.getElementById('pauseBtn').style.display = 'inline-block';
+        }
+
+        function pauseMusic() {
+            player.pauseVideo();
+            document.getElementById('playBtn').style.display = 'inline-block';
+            document.getElementById('pauseBtn').style.display = 'none';
+        }
+    </script>
+
+</body>
 </html>
