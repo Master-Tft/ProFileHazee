@@ -1,276 +1,163 @@
-/* 1. NỀN GRADIENT CHUYỂN ĐỘNG TOÀN TRANG */
+/* 1. THIẾT LẬP CHUNG - PHONG CÁCH DARK MODE IT */
 body {
     margin: 0;
     padding: 0;
+    overflow: hidden; /* Tránh thanh cuộn để hiện nền động tốt nhất */
+    background-color: #000;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-    background-size: 400% 400%;
-    animation: gradientMove 15s ease infinite;
+    font-family: 'Consolas', 'Courier New', monospace; /* Font chữ kiểu viết code */
 }
 
-@keyframes gradientMove {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+/* 2. NỀN CANVAS (Dòng mã chảy - Matrix) */
+#canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1; /* Đẩy nền ra phía sau */
 }
 
-/* 2. KHUNG CARD CHÍNH (HIỆU ỨNG GLASSMORPHISM) */
+/* 3. KHUNG CARD CHÍNH (CYBERPUNK STYLE) */
 .card {
-    background: rgba(255, 255, 255, 0.85);
+    background: rgba(0, 0, 0, 0.85); /* Nền đen trong suốt */
     padding: 40px;
-    border-radius: 25px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    border-radius: 15px;
+    border: 2px solid #00ff00; /* Viền xanh lá đặc trưng IT */
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.4), inset 0 0 10px rgba(0, 255, 0, 0.2);
     text-align: center;
     max-width: 400px;
     width: 90%;
-    backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    color: #00ff00; /* Màu chữ xanh Neon */
 }
 
-/* 3. ẢNH ĐẠI DIỆN */
+/* 4. ẢNH ĐẠI DIỆN VỚI HIỆU ỨNG QUÉT (SCANNING) */
 .avatar {
-    width: 150px;
-    height: 150px;
+    width: 140px;
+    height: 140px;
     border-radius: 50%;
     object-fit: cover;
-    border: 5px solid #fff;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    border: 3px solid #00ff00;
+    filter: drop-shadow(0 0 15px #00ff00);
     margin-bottom: 20px;
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .avatar:hover {
-    transform: scale(1.1) rotate(5deg);
+    transform: rotateY(180deg) scale(1.1); /* Xoay 3D khi di chuột */
 }
 
-/* 4. TIÊU ĐỀ VÀ TICK XANH */
+/* 5. TÊN VÀ TICK XANH VỚI HIỆU ỨNG GLOW */
 h1 {
-    color: #333;
-    margin-bottom: 10px;
     font-size: 1.8rem;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px #00ff00;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .verified-tick {
-    color: #1d9bf0;
-    font-size: 1.2rem;
-    margin-left: 8px;
+    color: #00e5ff; /* Màu xanh Cyan cho tick xác minh */
+    font-size: 1.3rem;
+    margin-left: 10px;
+    filter: drop-shadow(0 0 5px #00e5ff);
 }
 
-p {
-    color: #555;
+/* 6. HIỆU ỨNG CHỮ GÕ (TYPING EFFECT) CHO MMO/IT */
+.it-typing {
     font-size: 1.1rem;
-    margin-bottom: 20px;
+    color: #fff;
+    border-right: 2px solid #00ff00;
+    white-space: nowrap;
+    overflow: hidden;
+    margin: 0 auto 25px auto;
+    width: fit-content;
+    animation: typing 3.5s steps(30, end), blink 0.75s step-end infinite;
 }
 
-/* 5. Ô LIÊN HỆ (CONTACT BOX) */
+@keyframes typing { from { width: 0 } to { width: 100% } }
+@keyframes blink { from, to { border-color: transparent } 50% { border-color: #00ff00 } }
+
+/* 7. Ô LIÊN HỆ (CONTACT BOX) */
 .contact-box {
-    background: rgba(255, 255, 255, 0.5);
-    border: 1px dashed #1d9bf0;
+    background: rgba(0, 255, 0, 0.1);
+    border: 1px solid #00ff00;
     padding: 12px;
-    border-radius: 15px;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    color: #333;
+    border-radius: 8px;
+    margin-bottom: 25px;
     font-size: 0.9rem;
     transition: 0.3s;
 }
 
-.contact-box i { color: #e73c7e; }
-.contact-box strong { color: #1d9bf0; }
-.contact-box:hover {
-    background: #fff;
-    transform: scale(1.02);
+.contact-box a {
+    color: #00ff00;
+    text-decoration: none;
 }
 
-/* 6. CÁC NÚT MẠNG XÃ HỘI */
+.contact-box:hover {
+    background: rgba(0, 255, 0, 0.2);
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.4);
+}
+
+/* 8. NÚT MẠNG XÃ HỘI PHONG CÁCH GAMING */
 .social-links {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    margin-bottom: 20px;
 }
 
 .social-links a {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 12px;
     padding: 12px;
-    color: white;
+    color: #fff;
     text-decoration: none;
-    border-radius: 30px;
+    border-radius: 5px;
     font-weight: bold;
-    transition: all 0.4s ease;
+    text-transform: uppercase;
+    border: 1px solid #00ff00;
+    transition: 0.4s;
+    background: rgba(0, 0, 0, 0.5);
 }
-
-.github { background: linear-gradient(45deg, #24292e, #4b5157); }
-.facebook { background: linear-gradient(45deg, #0664ed, #1877f2); }
-.TikTok { background: linear-gradient(45deg, #000000, #25F4EE, #FE2C55); background-size: 200%; }
 
 .social-links a:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    background: #00ff00;
+    color: #000;
+    box-shadow: 0 0 20px #00ff00;
+    transform: translateX(5px);
 }
 
-.TikTok:hover { animation: tiktok-shake 0.5s infinite; }
-
-@keyframes tiktok-shake {
-    0% { transform: translateY(-3px) rotate(0deg); }
-    50% { transform: translateY(-3px) rotate(2deg); }
-    100% { transform: translateY(-3px) rotate(0deg); }
-}
-
-/* 7. TRÌNH PHÁT NHẠC YOUTUBE */
+/* 9. TRÌNH PHÁT NHẠC YOUTUBE CYBER */
 .youtube-music {
-    background: rgba(255, 255, 255, 0.4);
-    padding: 15px;
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0, 255, 0, 0.3);
 }
 
 .youtube-music p {
     font-size: 0.8rem;
-    margin-bottom: 10px;
-    color: #ff0000;
-    font-weight: bold;
+    color: #00ff00;
+    margin-bottom: 12px;
 }
 
 #playBtn, #pauseBtn {
-    background: #ff0000;
-    color: white;
-    border: none;
+    background: transparent;
+    color: #00ff00;
+    border: 1px solid #00ff00;
     padding: 8px 20px;
-    border-radius: 20px;
+    border-radius: 4px;
     cursor: pointer;
     font-weight: bold;
     transition: 0.3s;
 }
 
 #playBtn:hover, #pauseBtn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
-}
-body {
-    margin: 0;
-    overflow: hidden; /* Để không bị cuộn trang khi có nền canvas */
-    background: #000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    font-family: 'Consolas', 'Courier New', monospace;
-}
-
-#canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: -1;
-}
-
-.card {
-    background: rgba(0, 0, 0, 0.8);
-    border: 2px solid #0F0; /* Viền xanh đặc trưng IT */
-    padding: 30px;
-    border-radius: 15px;
-    text-align: center;
-    max-width: 380px;
-    width: 90%;
-    color: #0F0;
-    box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
-    backdrop-filter: blur(5px);
-}
-
-.avatar {
-    width: 130px;
-    height: 130px;
-    border-radius: 50%;
-    border: 3px solid #0F0;
-    filter: drop-shadow(0 0 10px #0F0);
-    margin-bottom: 15px;
-    transition: 0.5s;
-}
-
-.avatar:hover {
-    transform: rotateY(180deg); /* Xoay ảnh kiểu 3D */
-}
-
-h1 {
-    font-size: 1.6rem;
-    text-shadow: 0 0 10px #0F0;
-}
-
-.it-typing {
-    font-size: 1rem;
-    border-right: 2px solid #0F0;
-    white-space: nowrap;
-    overflow: hidden;
-    margin: 0 auto 20px auto;
-    width: fit-content;
-    animation: typing 3.5s steps(30, end), blink 0.7s step-end infinite;
-}
-
-@keyframes typing { from { width: 0 } to { width: 100% } }
-@keyframes blink { from, to { border-color: transparent } 50% { border-color: #0F0 } }
-
-.contact-box {
-    background: rgba(0, 255, 0, 0.1);
-    border: 1px solid #0F0;
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    font-size: 0.85rem;
-}
-
-.social-links a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    text-decoration: none;
-    color: #fff;
-    font-weight: bold;
-    text-transform: uppercase;
-    transition: 0.3s;
-    border: 1px solid transparent;
-}
-
-.github { background: #333; }
-.facebook { background: #1877f2; }
-.TikTok { background: #fe2c55; }
-
-.social-links a:hover {
-    background: transparent;
-    border: 1px solid #0F0;
-    color: #0F0;
-    box-shadow: 0 0 15px #0F0;
-}
-
-.youtube-music {
-    margin-top: 20px;
-    border-top: 1px solid #0F0;
-    padding-top: 15px;
-}
-
-#playBtn, #pauseBtn {
-    background: #0F0;
+    background: #00ff00;
     color: #000;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
+    box-shadow: 0 0 15px #00ff00;
 }
