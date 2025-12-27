@@ -160,3 +160,117 @@ p {
     transform: scale(1.05);
     box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
 }
+body {
+    margin: 0;
+    overflow: hidden; /* Để không bị cuộn trang khi có nền canvas */
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Consolas', 'Courier New', monospace;
+}
+
+#canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.card {
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid #0F0; /* Viền xanh đặc trưng IT */
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    max-width: 380px;
+    width: 90%;
+    color: #0F0;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+    backdrop-filter: blur(5px);
+}
+
+.avatar {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    border: 3px solid #0F0;
+    filter: drop-shadow(0 0 10px #0F0);
+    margin-bottom: 15px;
+    transition: 0.5s;
+}
+
+.avatar:hover {
+    transform: rotateY(180deg); /* Xoay ảnh kiểu 3D */
+}
+
+h1 {
+    font-size: 1.6rem;
+    text-shadow: 0 0 10px #0F0;
+}
+
+.it-typing {
+    font-size: 1rem;
+    border-right: 2px solid #0F0;
+    white-space: nowrap;
+    overflow: hidden;
+    margin: 0 auto 20px auto;
+    width: fit-content;
+    animation: typing 3.5s steps(30, end), blink 0.7s step-end infinite;
+}
+
+@keyframes typing { from { width: 0 } to { width: 100% } }
+@keyframes blink { from, to { border-color: transparent } 50% { border-color: #0F0 } }
+
+.contact-box {
+    background: rgba(0, 255, 0, 0.1);
+    border: 1px solid #0F0;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-size: 0.85rem;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: 0.3s;
+    border: 1px solid transparent;
+}
+
+.github { background: #333; }
+.facebook { background: #1877f2; }
+.TikTok { background: #fe2c55; }
+
+.social-links a:hover {
+    background: transparent;
+    border: 1px solid #0F0;
+    color: #0F0;
+    box-shadow: 0 0 15px #0F0;
+}
+
+.youtube-music {
+    margin-top: 20px;
+    border-top: 1px solid #0F0;
+    padding-top: 15px;
+}
+
+#playBtn, #pauseBtn {
+    background: #0F0;
+    color: #000;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
