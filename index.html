@@ -8,33 +8,23 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <canvas id="matrixCanvas"></canvas>
 
     <div class="card">
-        <img src="avatar.png" alt="Mậu Thân Avatar" class="avatar">
+        <img src="avatar.png" alt="Avatar" class="avatar">
         
         <h1>Mậu Thân (Hazee) <i class="fas fa-check-circle verified-tick"></i></h1>
-        
-        <p>🚀 IT Developer | MMO Strategist</p>
+        <p class="subtitle">🚀 IT Developer | MMO Strategist</p>
 
         <div class="contact-box">
             <i class="fas fa-envelope"></i>
-            <a href="mailto:mauthansky77@gmail.com" style="text-decoration:none; color:inherit;">
-                CONTACT: <strong>mauthansky77@gmail.com</strong>
-            </a>
+            <a href="mailto:mauthansky77@gmail.com"><strong>CONTACT: mauthansky77@gmail.com</strong></a>
         </div>
         
         <div class="social-links">
-            <a href="https://github.com/Master-Tft" class="github" target="_blank">
-                <i class="fab fa-github"></i> GitHub
-            </a>
-
-            <a href="https://web.facebook.com/Hazee.070908" class="facebook" target="_blank">
-                <i class="fab fa-facebook"></i> Facebook
-            </a>
-
-            <a href="https://www.tiktok.com/@hazee.070908" class="TikTok" target="_blank">
-                <i class="fab fa-tiktok"></i> TikTok
-            </a>
+            <a href="https://github.com/Master-Tft" class="github" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+            <a href="https://web.facebook.com/Hazee.070908" class="facebook" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+            <a href="https://www.tiktok.com/@hazee.070908" class="tiktok" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a>
         </div>
 
         <div class="youtube-music">
@@ -45,28 +35,46 @@
         </div>
     </div>
 
+    <script>
+        const canvas = document.getElementById('matrixCanvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        const letters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+        const drops = Array(Math.floor(columns)).fill(1);
+
+        function drawMatrix() {
+            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "#0F0";
+            ctx.font = fontSize + "px monospace";
+            for (let i = 0; i < drops.length; i++) {
+                const text = letters.charAt(Math.floor(Math.random() * letters.length));
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+                drops[i]++;
+            }
+        }
+        setInterval(drawMatrix, 33);
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
+
     <script src="https://www.youtube.com/iframe_api"></script>
     <script>
         var player;
         function onYouTubeIframeAPIReady() {
             player = new YT.Player('player', {
-                height: '0',
-                width: '0',
-                videoId: 'SPTUEeGW50E',
+                height: '0', width: '0', videoId: 'SPTUEeGW50E',
                 playerVars: { 'autoplay': 0, 'loop': 1, 'playlist': 'SPTUEeGW50E' }
             });
         }
-        function playMusic() {
-            player.playVideo();
-            document.getElementById('playBtn').style.display = 'none';
-            document.getElementById('pauseBtn').style.display = 'inline-block';
-        }
-        function pauseMusic() {
-            player.pauseVideo();
-            document.getElementById('playBtn').style.display = 'inline-block';
-            document.getElementById('pauseBtn').style.display = 'none';
-        }
+        function playMusic() { player.playVideo(); document.getElementById('playBtn').style.display='none'; document.getElementById('pauseBtn').style.display='inline-block'; }
+        function pauseMusic() { player.pauseVideo(); document.getElementById('playBtn').style.display='inline-block'; document.getElementById('pauseBtn').style.display='none'; }
     </script>
-
 </body>
 </html>
