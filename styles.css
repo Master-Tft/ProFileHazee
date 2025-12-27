@@ -7,7 +7,6 @@ body {
     align-items: center;
     min-height: 100vh;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    /* Màu nền gradient kết hợp từ các tone nóng và lạnh */
     background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
     background-size: 400% 400%;
     animation: gradientMove 15s ease infinite;
@@ -19,16 +18,16 @@ body {
     100% { background-position: 0% 50%; }
 }
 
-/* 2. KHUNG CARD CHÍNH */
+/* 2. KHUNG CARD CHÍNH (HIỆU ỨNG GLASSMORPHISM) */
 .card {
-    background: rgba(255, 255, 255, 0.85); /* Nền trắng trong suốt */
+    background: rgba(255, 255, 255, 0.85);
     padding: 40px;
     border-radius: 25px;
     box-shadow: 0 15px 35px rgba(0,0,0,0.2);
     text-align: center;
     max-width: 400px;
     width: 90%;
-    backdrop-filter: blur(15px); /* Hiệu ứng kính mờ */
+    backdrop-filter: blur(15px);
     border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
@@ -45,144 +44,119 @@ body {
 }
 
 .avatar:hover {
-    transform: scale(1.1) rotate(5deg); /* Phóng to và xoay nhẹ khi di chuột */
+    transform: scale(1.1) rotate(5deg);
 }
 
-/* 4. CHỮ TIÊU ĐỀ VÀ MÔ TẢ */
+/* 4. TIÊU ĐỀ VÀ TICK XANH */
 h1 {
     color: #333;
     margin-bottom: 10px;
     font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.verified-tick {
+    color: #1d9bf0;
+    font-size: 1.2rem;
+    margin-left: 8px;
 }
 
 p {
     color: #555;
     font-size: 1.1rem;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
-/* 5. CẤU TRÚC CHUNG CHO CÁC NÚT LIÊN KẾT */
+/* 5. Ô LIÊN HỆ (CONTACT BOX) */
+.contact-box {
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px dashed #1d9bf0;
+    padding: 12px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: #333;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+.contact-box i { color: #e73c7e; }
+.contact-box strong { color: #1d9bf0; }
+.contact-box:hover {
+    background: #fff;
+    transform: scale(1.02);
+}
+
+/* 6. CÁC NÚT MẠNG XÃ HỘI */
 .social-links {
     display: flex;
-    flex-direction: column; /* Sắp xếp các nút theo hàng dọc cho đẹp trên điện thoại */
-    gap: 15px;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
 }
 
 .social-links a {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 12px;
-    padding: 12px 25px;
+    gap: 10px;
+    padding: 12px;
     color: white;
     text-decoration: none;
     border-radius: 30px;
     font-weight: bold;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    font-size: 1rem;
+    transition: all 0.4s ease;
 }
 
-/* HIỆU ỨNG RIÊNG CHO TỪNG NÚT */
+.github { background: linear-gradient(45deg, #24292e, #4b5157); }
+.facebook { background: linear-gradient(45deg, #0664ed, #1877f2); }
+.TikTok { background: linear-gradient(45deg, #000000, #25F4EE, #FE2C55); background-size: 200%; }
 
-/* Nút GitHub */
-.github {
-    background: linear-gradient(45deg, #24292e, #4b5157, #000000);
-    background-size: 200% 200%;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+.social-links a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 
-.github:hover {
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    transform: translateY(-5px) scale(1.03);
-}
+.TikTok:hover { animation: tiktok-shake 0.5s infinite; }
 
-/* Nút Facebook */
-.facebook {
-    background: linear-gradient(45deg, #0664ed, #1877f2, #00d2ff);
-    background-size: 200% 200%;
-    box-shadow: 0 4px 15px rgba(24, 119, 242, 0.3);
-}
-
-.facebook:hover {
-    box-shadow: 0 0 20px rgba(24, 119, 242, 0.6);
-    transform: translateY(-5px) scale(1.03);
-}
-
-/* Nút TikTok */
-.TikTok {
-    background: linear-gradient(45deg, #000000, #25F4EE, #FE2C55);
-    background-size: 200% 200%;
-    box-shadow: 0 4px 15px rgba(254, 44, 85, 0.3);
-}
-
-.TikTok:hover {
-    animation: tiktok-shake 0.5s infinite;
-    box-shadow: 0 0 20px rgba(254, 44, 85, 0.6);
-}
-
-/* Hiệu ứng rung của TikTok */
 @keyframes tiktok-shake {
-    0% { transform: translateY(-5px) rotate(0deg); }
-    25% { transform: translateY(-5px) rotate(-2deg); }
-    50% { transform: translateY(-5px) rotate(2deg); }
-    75% { transform: translateY(-5px) rotate(-2deg); }
-    100% { transform: translateY(-5px) rotate(0deg); }
+    0% { transform: translateY(-3px) rotate(0deg); }
+    50% { transform: translateY(-3px) rotate(2deg); }
+    100% { transform: translateY(-3px) rotate(0deg); }
 }
 
-/* Icon chỉnh kích thước */
-.social-links a i {
-    font-size: 1.2rem;
-}
-/* Màu xanh chuẩn xác minh (Verified Tick) */
-.verified-tick {
-    color: #1d9bf0; /* Màu xanh đặc trưng của Twitter/Facebook */
-    font-size: 1.2rem;
-    vertical-align: middle;
-    margin-left: 5px;
+/* 7. TRÌNH PHÁT NHẠC YOUTUBE */
+.youtube-music {
+    background: rgba(255, 255, 255, 0.4);
+    padding: 15px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
-/* Hiệu ứng nhẹ khi di chuột vào tên */
-h1:hover .verified-tick {
-    transform: scale(1.2);
+.youtube-music p {
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+    color: #ff0000;
+    font-weight: bold;
+}
+
+#playBtn, #pauseBtn {
+    background: #ff0000;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
     transition: 0.3s;
 }
-/* Trang trí ô Contact */
-.contact-box {
-    background: rgba(255, 255, 255, 0.5);
-    border: 1px dashed #1d9bf0;
-    padding: 12px;
-    border-radius: 15px;
-    margin-bottom: 25px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    color: #333;
-    font-size: 0.95rem;
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
 
-.contact-box i {
-    color: #e73c7e; /* Màu icon thư */
-    font-size: 1.1rem;
-}
-
-.contact-box:hover {
-    background: #fff;
-    border-style: solid;
-    transform: scale(1.02);
-    box-shadow: 0 5px 15px rgba(29, 155, 240, 0.2);
-}
-
-.contact-box strong {
-    color: #1d9bf0;
-}
-
-/* Đảm bảo các phần khác vẫn hoạt động tốt */
-.verified-tick {
-    color: #1d9bf0;
-    font-size: 1.2rem;
-    vertical-align: middle;
-    margin-left: 5px;
+#playBtn:hover, #pauseBtn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
 }
