@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mậu Thân (Hazee) - Portfolio</title>
+    <title>Mậu Thân (Hazee) - IT & MMO</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -11,14 +11,16 @@
     <canvas id="matrixCanvas"></canvas>
 
     <div class="card">
-        <img src="avatar.png" alt="Avatar" class="avatar">
+        <div class="avatar-container">
+            <img src="avatar.png" alt="Avatar" class="avatar">
+        </div>
         
         <h1>Mậu Thân (Hazee) <i class="fas fa-check-circle verified-tick"></i></h1>
         <p class="subtitle">🚀 IT Developer | MMO Strategist</p>
 
         <div class="contact-box">
             <i class="fas fa-envelope"></i>
-            <a href="mailto:mauthansky77@gmail.com"><strong>CONTACT: mauthansky77@gmail.com</strong></a>
+            <a href="mailto:mauthansky77@gmail.com"><strong>mauthansky77@gmail.com</strong></a>
         </div>
         
         <div class="social-links">
@@ -28,10 +30,10 @@
         </div>
 
         <div class="youtube-music">
-            <p><i class="fab fa-youtube"></i> Donald Gold - Trăng Hoa Mây Mưa</p>
+            <p class="music-title"><i class="fab fa-youtube"></i> Donald Gold - Trăng Hoa Mây Mưa</p>
             <div id="player" style="display:none;"></div>
-            <button onclick="playMusic()" id="playBtn">Play Music 🎵</button>
-            <button onclick="pauseMusic()" id="pauseBtn" style="display:none;">Pause ⏸️</button>
+            <button onclick="playMusic()" id="playBtn" class="glow-button">Play Music 🎵</button>
+            <button onclick="pauseMusic()" id="pauseBtn" class="glow-button" style="display:none;">Pause ⏸️</button>
         </div>
     </div>
 
@@ -40,11 +42,10 @@
         const ctx = canvas.getContext('2d');
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-        const letters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        const letters = "01010101HAZEEITMMO0101";
         const fontSize = 16;
         const columns = canvas.width / fontSize;
         const drops = Array(Math.floor(columns)).fill(1);
-
         function drawMatrix() {
             ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -58,10 +59,6 @@
             }
         }
         setInterval(drawMatrix, 33);
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
     </script>
 
     <script src="https://www.youtube.com/iframe_api"></script>
