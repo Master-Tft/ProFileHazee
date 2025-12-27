@@ -1,17 +1,17 @@
-/* 1. THIẾT LẬP CHUNG */
+/* 1. THIẾT LẬP NỀN ĐEN VÀ CĂN GIỮA */
 body {
     margin: 0;
     padding: 0;
     overflow: hidden;
     background-color: #000;
     display: flex;
-    justify-content: center; /* Căn giữa theo chiều ngang */
-    align-items: center;     /* Căn giữa theo chiều dọc */
+    justify-content: center;
+    align-items: center;
     min-height: 100vh;
-    font-family: 'Consolas', 'Courier New', monospace;
+    font-family: 'Inter', sans-serif; /* Font chữ hiện đại */
 }
 
-/* 2. NỀN MATRIX */
+/* 2. NỀN MATRIX CHẠY PHÍA SAU */
 #canvas {
     position: fixed;
     top: 0;
@@ -19,81 +19,71 @@ body {
     z-index: -1;
 }
 
-/* 3. CARD NỘI DUNG - FIX LỖI BỊ LỆCH */
+/* 3. CARD TRẮNG (GIỐNG MẪU BẠN GỬI) */
 .card {
-    background: rgba(0, 0, 0, 0.85); /* Nền đen bóng đêm */
+    background: #f0f9ff; /* Màu xanh nhạt cực nhẹ như ảnh mẫu */
     padding: 30px;
-    border-radius: 20px;
-    border: 2px solid #00ff00;
-    box-shadow: 0 0 30px rgba(0, 255, 0, 0.2);
+    border-radius: 40px; /* Bo góc tròn nhiều như mẫu */
     text-align: center;
-    max-width: 350px;
-    width: 90%;
-    backdrop-filter: blur(10px);
-    color: #00ff00;
-    position: relative; /* Đảm bảo không bị ảnh hưởng bởi các thành phần khác */
+    max-width: 320px;
+    width: 85%;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
     z-index: 10;
 }
 
-/* 4. ẢNH ĐẠI DIỆN */
+/* 4. ẢNH ĐẠI DIỆN TRÒN CÓ VIỀN TRẮNG */
 .avatar {
-    width: 120px;
-    height: 120px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid #00ff00;
-    filter: drop-shadow(0 0 10px #00ff00);
-    margin-bottom: 15px;
-    transition: 0.5s;
+    border: 5px solid #fff;
+    background: #ccc;
+    margin-bottom: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
-.avatar:hover {
-    transform: scale(1.1) rotate(5deg);
-}
-
-/* 5. TEXT & TICK XANH */
+/* 5. TEXT TRONG CARD (MÀU TỐI CHO DỄ ĐỌC) */
 h1 {
-    font-size: 1.5rem;
-    margin: 10px 0;
-    text-shadow: 0 0 10px #00ff00;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    color: #333;
+    font-size: 1.6rem;
+    margin: 10px 0 5px 0;
 }
 
 .verified-tick {
-    color: #00e5ff;
-    font-size: 1.1rem;
-    margin-left: 8px;
+    color: #1d9bf0;
+    font-size: 1.2rem;
+    margin-left: 5px;
 }
 
 .it-typing {
-    color: #fff;
-    font-size: 0.9rem;
+    color: #666;
+    font-size: 0.95rem;
     margin-bottom: 20px;
-    opacity: 0.8;
+    line-height: 1.4;
 }
 
-/* 6. Ô LIÊN HỆ & NÚT BẤM */
+/* 6. Ô EMAIL (VIỀN ĐỨT XANH) */
 .contact-box {
-    background: rgba(0, 255, 0, 0.1);
-    border: 1px solid #00ff00;
+    background: #fff;
+    border: 1px dashed #1d9bf0;
     padding: 10px;
-    border-radius: 10px;
+    border-radius: 15px;
     margin-bottom: 20px;
-    font-size: 0.85rem;
 }
 
 .contact-box a {
-    color: #00ff00;
+    color: #1d9bf0;
     text-decoration: none;
     font-weight: bold;
+    font-size: 0.9rem;
 }
 
+/* 7. CÁC NÚT MẠNG XÃ HỘI (GIỐNG MẪU) */
 .social-links {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
 }
 
 .social-links a {
@@ -104,44 +94,41 @@ h1 {
     padding: 12px;
     color: #fff;
     text-decoration: none;
-    border-radius: 10px;
+    border-radius: 25px;
     font-weight: bold;
-    font-size: 0.9rem;
-    border: 1px solid rgba(0, 255, 0, 0.3);
+    font-size: 1rem;
     transition: 0.3s;
-    background: rgba(255, 255, 255, 0.05);
 }
+
+.github { background: #444b52; }
+.facebook { background: #1877f2; }
+.TikTok { background: linear-gradient(to right, #000000, #25f4ee, #fe2c55); }
 
 .social-links a:hover {
-    background: #00ff00;
-    color: #000;
-    box-shadow: 0 0 20px #00ff00;
+    transform: scale(1.03);
 }
 
-/* 7. NHẠC YOUTUBE */
+/* 8. KHU VỰC NHẠC (GIỐNG MẪU) */
 .youtube-music {
+    background: #f1f5f9;
+    padding: 15px;
+    border-radius: 25px;
     margin-top: 20px;
-    padding-top: 15px;
-    border-top: 1px solid rgba(0, 255, 0, 0.2);
 }
 
 .youtube-music p {
-    font-size: 0.75rem;
-    color: #00ff00;
+    color: #ff0000;
+    font-weight: bold;
+    font-size: 0.8rem;
     margin-bottom: 10px;
 }
 
-#playBtn, #pauseBtn {
-    background: transparent;
-    color: #00ff00;
-    border: 1px solid #00ff00;
-    padding: 8px 15px;
-    border-radius: 8px;
+#playBtn {
+    background: #ff0000;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: bold;
     cursor: pointer;
-    font-size: 0.8rem;
-}
-
-#playBtn:hover {
-    background: #00ff00;
-    color: #000;
 }
